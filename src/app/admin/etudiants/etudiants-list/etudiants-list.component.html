@@ -1,0 +1,47 @@
+<div class="container pt-2">
+    <!-- No data message -->
+    <p *ngIf="etudiants.length <= 0" class="no-data text-center">There is no etudiant added yet!</p>
+    <!-- authors list -->
+    <div class="data-list">
+        <p class="float-end">
+            <a routerLink="/admin/add-etudiant" class="btn btn-primary">Add etudiant</a>
+        </p>
+        <table class="table table-bordered table-hover" *ngIf="etudiants.length > 0">
+            <caption>List of etudiants</caption>
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Date de naissance</th>
+                    <th scope="col">Lieu</th>
+                    <th scope="col">Niveau</th>
+                    <th scope="col">Domaine</th>
+                    <th scope="col center">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let etudiant of etudiants; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{etudiant.prenom}}</td>
+                    <td>{{etudiant.nom}}</td>
+                    <td>{{etudiant.dateNaissance | date:"dd/MM/yyyy"}}</td>
+                    <td>{{etudiant.lieuNaissance}}</td>
+                    <td>{{etudiant.niveau.nom}}</td>
+                    <td>{{etudiant.domaine.nom}}</td>
+                    <td class="text-center edit-block">
+                        <span class="edit me-3" [routerLink]="['/admin/edit-etudiant/', etudiant._id]">
+                            <button type="button" class="btn btn-success btn-sm">Modifier</button>
+                        </span>
+                        <span class="delete me-3" (click)="remove(etudiant._id, i)">
+                            <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                        </span>
+                        <span class="delete">
+                            <button type="button" class="btn btn-primary btn-sm">voir plus</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

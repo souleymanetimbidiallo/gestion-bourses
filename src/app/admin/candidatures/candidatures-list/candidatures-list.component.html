@@ -1,0 +1,46 @@
+<div class="container pt-2">
+    <!-- No data message -->
+    <p *ngIf="candidatures.length <= 0" class="no-data text-center">There is no candidature added yet!</p>
+    <div class="data-list">
+        <p class="float-end">
+            <a routerLink="/admin/add-candidature" class="btn btn-primary">Ajouter</a>
+        </p>
+        <table class="table table-bordered table-hover" *ngIf="candidatures.length > 0">
+            <caption>Liste des candidatures</caption>
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Etudiant</th>
+                    <th scope="col">Bourse</th>
+                    <th scope="col">Date de Depot</th>
+                    <th scope="col">Etat</th>
+                    <th scope="col">Resultat</th>
+                    <th scope="col">Commentaire</th>
+                    <th scope="col center">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let candidature of candidatures; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{candidature.etudiant.nom}} {{candidature.etudiant.nom}}</td>
+                    <td>{{candidature.bourse.nom}}</td>
+                    <td>{{candidature.dateDepot | date:"dd/MM/yyyy"}}</td>
+                    <td>{{candidature.etat}}</td>
+                    <td>{{candidature.resultat_selection}}</td>
+                    <td>{{candidature.commentaire_selection}}</td>
+                    <td class="text-center edit-block">
+                        <span class="edit me-3" [routerLink]="['/admin/edit-candidature/', candidature._id]">
+                            <button type="button" class="btn btn-success btn-sm">Modifier</button>
+                        </span>
+                        <span class="delete me-3" (click)="remove(candidature._id, i)">
+                            <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                        </span>
+                        <span class="delete">
+                            <button type="button" class="btn btn-primary btn-sm">voir plus</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

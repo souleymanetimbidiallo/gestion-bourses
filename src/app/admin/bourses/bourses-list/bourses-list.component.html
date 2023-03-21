@@ -1,0 +1,51 @@
+<div class="container pt-2">
+    <!-- No data message -->
+    <p *ngIf="bourses.length <= 0" class="no-data text-center">There is no bourse added yet!</p>
+    <!-- authors list -->
+    <div class="data-list">
+        <p class="float-end">
+            <a routerLink="/admin/add-bourse" class="btn btn-primary">Add bourse</a>
+        </p>
+        <table class="table table-bordered table-hover" *ngIf="bourses.length > 0">
+            <caption>List of bourses</caption>
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Date limite</th>
+                    <th scope="col">Pays</th>
+                    <th scope="col">Niveaux</th>
+                    <th scope="col">Domaines</th>
+                    <th scope="col center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bourse of bourses; let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{bourse.nom}}</td>
+                    <td>{{bourse.montant}} €</td>
+                    <td>{{bourse.dateLimite | date:"dd/MM/yyyy à HH:mm"}}</td>
+                    <td>{{bourse.paysDestination}}</td>
+                    <td>
+                        <ul *ngFor="let niveau of bourse.niveaux, let nb =index"><li>{{niveau.nom}}</li></ul>
+                    </td>
+                    <td>
+                        <ul *ngFor="let domaine of bourse.domaines, let nb =index"><li>{{domaine.nom}}</li> </ul>
+                    </td>
+                    <td class="text-center edit-block">
+                        <span class="edit me-3" [routerLink]="['/admin/edit-bourse/', bourse._id]">
+                            <button type="button" class="btn btn-success btn-sm">Modifier</button>
+                        </span>
+                        <span class="delete me-3" (click)="remove(bourse._id, i)">
+                            <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                        </span>
+                        <span class="delete">
+                            <button type="button" class="btn btn-primary btn-sm">voir plus</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
