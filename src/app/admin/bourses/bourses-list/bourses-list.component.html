@@ -1,13 +1,13 @@
 <div class="container pt-2">
     <!-- No data message -->
-    <p *ngIf="bourses.length <= 0" class="no-data text-center">There is no bourse added yet!</p>
+    <p *ngIf="bourses.length <= 0" class="no-data text-center">Aucune bourse retrouvé</p>
     <!-- authors list -->
     <div class="data-list">
         <p class="float-end">
-            <a routerLink="/admin/add-bourse" class="btn btn-primary">Add bourse</a>
+            <a routerLink="/admin/add-bourse" class="btn btn-primary">Ajouter</a>
         </p>
         <table class="table table-bordered table-hover" *ngIf="bourses.length > 0">
-            <caption>List of bourses</caption>
+            <caption>Liste des bourses</caption>
             <thead class="table-primary">
                 <tr>
                     <th scope="col">N°</th>
@@ -41,7 +41,7 @@
                             <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
                         </span>
                         <span class="delete">
-                            <button type="button" class="btn btn-primary btn-sm">voir plus</button>
+                            <button type="button" class="btn btn-primary btn-sm">Voir</button>
                         </span>
                     </td>
                 </tr>

@@ -26,22 +26,26 @@ import { AdminModule } from './admin/admin.module';
 import { FrontModule } from './front/front.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FrontDashboardComponent } from './components/front/front-dashboard/front-dashboard.component';
+import {  MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrontDashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     AdminModule,
     FrontModule,
+    
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    
     MaterialModule,
     MatToolbarModule,
     MatButtonModule,
@@ -54,6 +58,10 @@ import { FrontDashboardComponent } from './components/front/front-dashboard/fron
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatStepperModule,
+    MatInputModule,
+    MatAutocompleteModule,  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

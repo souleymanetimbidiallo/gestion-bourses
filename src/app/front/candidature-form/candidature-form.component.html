@@ -1,0 +1,90 @@
+
+  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="personalFormGroup" errorMessage="Ces informations sont obligatoires.">
+      <form [formGroup]="personalFormGroup">
+        <ng-template matStepLabel>Informations personnelles</ng-template>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Nom</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Prénom</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="secondCtrl" required>
+              </mat-form-field>
+        </p>
+        <div>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="academicFormGroup" errorMessage="Ces informations sont obligatoires.">
+      <form [formGroup]="academicFormGroup">
+        <ng-template matStepLabel>Informations académiques</ng-template>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="academicCtrl" required>
+              </mat-form-field>
+        </p>
+        <div>
+            <button mat-button matStepperPrevious>Retour</button>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="coverLetterFormGroup" errorMessage="Ces informations sont obligatoires.">
+      <form [formGroup]="coverLetterFormGroup">
+        <ng-template matStepLabel>Lettre de motivation</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="coverLetterCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Retour</button>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="cvFormGroup" errorMessage="Ces informations sont obligatoires.">
+      <form [formGroup]="cvFormGroup">
+        <ng-template matStepLabel>Curriculum Vitae (CV)</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="cvCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Retour</button>
+            <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="attachmentFormGroup" errorMessage="Ces informations sont obligatoires.">
+      <form [formGroup]="attachmentFormGroup">
+        <ng-template matStepLabel>Pièces justificatives</ng-template>
+        <mat-form-field> 
+            <mat-label>Select file</mat-label>
+            <input matInput readonly type="text" id="fakeFileInput" (click)="hiddenInput.click()">
+            <input hidden type="file" accept=".pdf" #hiddenInput (change)="GetFileOnLoad($event)">
+            <mat-icon matSuffix>folder_open</mat-icon>
+         </mat-form-field>
+        <div>
+            <button mat-button matStepperPrevious>Retour</button>
+            <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Terminé</ng-template>
+      <p>Vous avez maintenant terminé.</p>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button (click)="stepper.reset()">Réinitialiser</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  

@@ -14,6 +14,9 @@ import { NiveauxListComponent } from './niveaux/niveaux-list/niveaux-list.compon
 import { DomainesListComponent } from './domaines/domaines-list/domaines-list.component';
 import { EtudiantsListComponent } from './etudiants/etudiants-list/etudiants-list.component';
 import { CandidaturesListComponent } from './candidatures/candidatures-list/candidatures-list.component';
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
+import { AdminFooterComponent } from './components/admin-footer/admin-footer.component';
+import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 
 
 
@@ -28,20 +31,24 @@ import { CandidaturesListComponent } from './candidatures/candidatures-list/cand
     NiveauxListComponent,
     DomainesListComponent,
     EtudiantsListComponent,
-    CandidaturesListComponent
+    CandidaturesListComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent,
+    AdminSidebarComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: AdminLayoutComponent, children: [
-        { path: '', component: AdminDashboardComponent },
-        { path: 'bourses', component: BoursesListComponent },
-        { path: 'candidatures', component: CandidaturesListComponent },
-        { path: 'etudiants', component: EtudiantsListComponent },
-        { path: 'domaines', component: DomainesListComponent },
-        { path: 'niveaux', component: NiveauxListComponent },
-    ]
-  }
+      {
+        path: '', component: AdminLayoutComponent, children: [
+          { path: '', component: AdminDashboardComponent },
+          { path: 'bourses', component: BoursesListComponent },
+          { path: 'candidatures', component: CandidaturesListComponent },
+          { path: 'etudiants', component: EtudiantsListComponent },
+          { path: 'domaines', component: DomainesListComponent },
+          { path: 'niveaux', component: NiveauxListComponent },
+        ]
+      }
     ])
   ]
 })
